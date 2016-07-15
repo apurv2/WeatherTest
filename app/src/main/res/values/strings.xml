@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WeatherTest</string>
+    <string name="hint_search">search</string>
+</resources>
