@@ -63,42 +63,47 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(mSavedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        // Setting up Recycler View and adapter to it.
-        mWeatherDetailsAdapter = new WeatherDetailsListAdapter(getApplicationContext(), new ArrayList<WeatherDetails>(), this);
-        RecyclerView mWeatherRecyclerView = (RecyclerView) findViewById(R.id.weatherList);
-        mWeatherRecyclerView.setAdapter(mWeatherDetailsAdapter);
-        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        mWeatherRecyclerView.setLayoutManager(mLayoutManager);
+        try {
 
 
-        //Setting up actionbar and setting a custom view to accept zip code.
-        ActionBar mActionBar = getSupportActionBar();
-        mActionBar.setDisplayShowCustomEnabled(true);
-        mActionBar.setCustomView(R.layout.search_bar);
+            // Setting up Recycler View and adapter to it.
+            mWeatherDetailsAdapter = new WeatherDetailsListAdapter(getApplicationContext(), new ArrayList<WeatherDetails>(), this);
+            RecyclerView mWeatherRecyclerView = (RecyclerView) findViewById(R.id.weatherList);
+            mWeatherRecyclerView.setAdapter(mWeatherDetailsAdapter);
+            final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+            mWeatherRecyclerView.setLayoutManager(mLayoutManager);
 
-        // Checking for app permissions on Android Marshmallow for GPS permission
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
-                PackageManager.PERMISSION_GRANTED && ActivityCompat.
-                checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-            // If the permission is not already granted, open dialog box to ask for permissions
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
-        } else {
-                //if the activity instance has been previously saved
-            if (mSavedInstanceState == null) {
+            //Setting up actionbar and setting a custom view to accept zip code.
+            ActionBar mActionBar = getSupportActionBar();
+            mActionBar.setDisplayShowCustomEnabled(true);
+            mActionBar.setCustomView(R.layout.search_bar);
 
-                // if the permissions have been granted get Weather Information using the current location of the user.
-                getFromServer(getCurrentZipCode());
+            // Checking for app permissions on Android Marshmallow for GPS permission
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
+                    PackageManager.PERMISSION_GRANTED && ActivityCompat.
+                    checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                // If the permission is not already granted, open dialog box to ask for permissions
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
             } else {
+                //if the activity instance has been previously saved
+                if (mSavedInstanceState == null) {
 
-                // Populate recycler view with the data fetched from a saved activity instance
-                populateRecyclerView(mSavedInstanceState.<WeatherDetails>getParcelableArrayList(WeatherConstants.STATE_CHANGED));
+                    // if the permissions have been granted get Weather Information using the current location of the user.
+                    getFromServer(getCurrentZipCode());
+                } else {
+
+                    // Populate recycler view with the data fetched from a saved activity instance
+                    populateRecyclerView(mSavedInstanceState.<WeatherDetails>getParcelableArrayList(WeatherConstants.STATE_CHANGED));
+                }
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
     }
+
 
     /**
      * Asynchronous HTTP GET method to API to fetch weather information
@@ -124,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements
 
 
             }
+
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
@@ -152,6 +158,9 @@ public class MainActivity extends AppCompatActivity implements
                 //geoCoder API to fetch postal code from latitude and longitude
                 List<Address> address = mGeocoder.getFromLocation(mLocation.getLatitude(), mLocation.getLongitude(), 1);
                 mZip5 = address.get(0).getPostalCode();
+            }else
+            {
+                throw new NullPointerException();
             }
 
         } catch (IOException e) {
