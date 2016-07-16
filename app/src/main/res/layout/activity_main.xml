@@ -19,8 +19,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:divider="#00000000"
-            android:dividerHeight="5dp"
-            android:paddingTop="10dp"
+            android:dividerHeight="@dimen/divider_height"
+            android:paddingTop="@dimen/recycler_view_padding_top"
             android:scrollbars="none" />
     </LinearLayout>
 </LinearLayout>

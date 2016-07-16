@@ -6,23 +6,23 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="@dimen/list_view_height"
         android:orientation="horizontal"
-        android:layout_height="72dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="8dp">
+        android:paddingLeft="@dimen/list_left_padding"
+        android:paddingRight="@dimen/list_right_padding"
+        android:paddingTop="@dimen/list_padding_top">
 
         <ImageView
-            android:layout_marginTop="5dp"
             android:id="@+id/weatherImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp" />
+            android:layout_width="@dimen/list_image_width"
+            android:layout_height="@dimen/list_image_height"
+            android:layout_marginTop="@dimen/list_margin_top" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingLeft="5dp">
+            android:paddingLeft="@dimen/layout_left_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -32,45 +32,45 @@
 
                 <TextView
                     android:id="@+id/day"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/zero_width"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="day"
-                    android:textColor="@color/black"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:text="@string/day"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/high"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/zero_width"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:text="high"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:text="@string/high"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/low"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/zero_width"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:text="low"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:text="@string/low"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="5dp">
+                android:paddingTop="@dimen/list_margin_top">
 
                 <TextView
                     android:id="@+id/condition"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
+                    android:text="@string/condition"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="condition" />
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 

@@ -18,6 +18,7 @@ public class WeatherDetails implements Parcelable{
     int averageHumidity;
     String imageUrl;
 
+    //Constructor class to populate Weather Details
     public WeatherDetails(String day, String high, String low, String condition, int maxWind, int averageWind, int averageHumidity, String imageUrl) {
         this.day = day;
         this.high = high;
@@ -29,6 +30,7 @@ public class WeatherDetails implements Parcelable{
         this.imageUrl = imageUrl;
     }
 
+    //Parcel implementation to store weatherDetails in android parcel
     protected WeatherDetails(Parcel in) {
         day = in.readString();
         high = in.readString();
@@ -40,6 +42,9 @@ public class WeatherDetails implements Parcelable{
         imageUrl = in.readString();
     }
 
+    /**
+     * Creator classes for parcel
+     */
     public static final Creator<WeatherDetails> CREATOR = new Creator<WeatherDetails>() {
         @Override
         public WeatherDetails createFromParcel(Parcel in) {
@@ -138,6 +143,11 @@ public class WeatherDetails implements Parcelable{
         return 0;
     }
 
+    /**
+     * writing class fields to parcel
+     * @param dest
+     * @param flags
+     */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(day);

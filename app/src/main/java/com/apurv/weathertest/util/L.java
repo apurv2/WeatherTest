@@ -7,6 +7,10 @@ import android.util.Log;
  */
 public class L {
 
+    /**
+     * logs message
+     * @param message
+     */
     public static void m(String message) {
 
         Log.v("weatherTag", message);

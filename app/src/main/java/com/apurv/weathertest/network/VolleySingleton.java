@@ -22,11 +22,11 @@ public class VolleySingleton {
      * Constructor to create Request queue
      */
     private VolleySingleton() {
-
+        //Initializing Request queue object
         mRequestQueue = Volley.newRequestQueue(GlobalApplicationContext.getAppContext());
-
+        //Using Image loader to load images and chaching them
         mImageLoader = new ImageLoader(mRequestQueue, new ImageLoader.ImageCache() {
-
+            //Chaching images
             private LruCache<String, Bitmap> cache = new LruCache<>((int) (Runtime.getRuntime().maxMemory() / 1024) / 8);
 
             @Override

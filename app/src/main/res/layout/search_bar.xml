@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
-        android:hint="Enter zip code"
+        android:hint="@string/enter_zip_code"
         android:maxLength="5"
         android:inputType="number" />
 

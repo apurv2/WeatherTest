@@ -63,6 +63,7 @@ public class GPSTracker extends Service implements LocationListener {
                     }
                 }
             } else {
+                //show error message when neither provider is available
                 Utilities.showALertDialog(WeatherConstants.GPS_ERROR, mFragmentManager);
 
             }

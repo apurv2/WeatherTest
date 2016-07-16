@@ -30,17 +30,20 @@ public class AlertDialog extends DialogFragment {
         android.app.AlertDialog.Builder mDialogBuilder = new android.app.AlertDialog.Builder(getActivity());
         LayoutInflater mLayoutInflater = getActivity().getLayoutInflater();
 
-
+        //getting the root view of the page and inflating it to a Java object
         View mPageView = mLayoutInflater.inflate(R.layout.dialog_alert, null);
         mDialogBuilder.setView(mPageView);
 
+        //Getting message sent via bundle from calling activity
         Bundle mMessageBundle = this.getArguments();
         final String mAlertText = mMessageBundle.getString(WeatherConstants.ALERT_TEXT);
+
+        //populating message into text view inside Alert Dialog
         TextView mMessageTextView = (TextView) mPageView.findViewById(R.id.text);
         mMessageTextView.setText(mAlertText);
         setCancelable(false);
 
-
+        //Initializing ok button
         Button mOkButton = (Button) mPageView.findViewById(R.id.ok_button);
         mOkButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +51,9 @@ public class AlertDialog extends DialogFragment {
                 MainActivity mParentActivity;
                 mParentActivity = (MainActivity) getActivity();
 
+                //calling the callback method to the activity
                 mParentActivity.alertCallback();
+                //dismiss the alert dialog
                 dismiss();
             }
         });

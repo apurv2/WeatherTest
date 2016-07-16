@@ -2,26 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginTop="10dp"
+    android:layout_marginLeft="@dimen/weatherDetails_margin_left"
+    android:layout_marginRight="@dimen/weatherDetails_margin_right"
+    android:layout_marginTop="@dimen/weatherDetails_margin_top"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/weather_details_row_margin_bottom"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_width"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="day:" />
+            android:text="@string/day" />
 
         <TextView
             android:id="@+id/day1"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_width"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
@@ -31,18 +31,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/weather_details_row_margin_bottom"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_width"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="high:" />
+            android:text="@string/high" />
 
         <TextView
             android:id="@+id/high1"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_width"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
@@ -52,18 +52,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/weather_details_row_margin_bottom"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_width"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="low:" />
+            android:text="@string/low" />
 
         <TextView
             android:id="@+id/low1"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_width"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
@@ -73,18 +73,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/weather_details_row_margin_bottom"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_width"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="condition:" />
+            android:text="@string/condition" />
 
         <TextView
             android:id="@+id/condition1"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_width"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
@@ -94,18 +94,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/weather_details_row_margin_bottom"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_width"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="max wind:" />
+            android:text="@string/max_wind" />
 
         <TextView
             android:id="@+id/maxWind"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_width"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
@@ -115,18 +115,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/weather_details_row_margin_bottom"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_width"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="average wind:" />
+            android:text="@string/average_wind" />
 
         <TextView
             android:id="@+id/avgWind"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_width"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
@@ -136,18 +136,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/weather_details_row_margin_bottom"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_width"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="average humidity:" />
+            android:text="@string/average_humidity" />
 
         <TextView
             android:id="@+id/avgHumidity"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_width"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 

@@ -35,16 +35,31 @@ public class WeatherDetailsListAdapter extends RecyclerView.Adapter<WeatherDetai
     private VolleySingleton mVolleySingleton;
     RecyclerTouchInterface mRecyclerInterface;
 
+    /**
+     * constructor to populate adapter with weather details and interface for Recycler view touch callback
+     *
+     * @param context        - contains activity context
+     * @param data           - weather data
+     * @param parentActivity - Inteface for touch callback
+     */
     public WeatherDetailsListAdapter(Context context, List<WeatherDetails> data, RecyclerTouchInterface parentActivity) {
 
         mLayoutInflator = LayoutInflater.from(context);
         this.mWeatherDataList = data;
         mVolleySingleton = VolleySingleton.getNetworkInstnace();
+        //Image loader to load images
         mImageLoader = mVolleySingleton.getmImageLoader();
         this.mRecyclerInterface = parentActivity;
     }
 
 
+    /**
+     * Creating view holder to contain the weather details single row
+     *
+     * @param viewGroup
+     * @param i
+     * @return
+     */
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
 
@@ -54,14 +69,20 @@ public class WeatherDetailsListAdapter extends RecyclerView.Adapter<WeatherDetai
         return mViewHolder;
     }
 
+    /**
+     * To bind weatherData from API to adapter's viewHolder
+     *
+     * @param myViewHolder
+     * @param mPosition
+     */
     @Override
     public void onBindViewHolder(WeatherDetailsListAdapter.MyViewHolder myViewHolder, int mPosition) {
 
-
+        //binding weather data to adapter
         WeatherDetails mWeatherDetail = mWeatherDataList.get(mPosition);
         myViewHolder.day.setText(mWeatherDetail.getDay());
-        myViewHolder.high.setText("H:"+mWeatherDetail.getHigh());
-        myViewHolder.low.setText("L:"+mWeatherDetail.getLow());
+        myViewHolder.high.setText("H:" + mWeatherDetail.getHigh());
+        myViewHolder.low.setText("L:" + mWeatherDetail.getLow());
         myViewHolder.condition.setText(mWeatherDetail.getCondition());
 
 
@@ -69,6 +90,13 @@ public class WeatherDetailsListAdapter extends RecyclerView.Adapter<WeatherDetai
 
     }
 
+    /**
+     * load images from URL parsed from JSON
+     *
+     * @param mViewHolder
+     * @param url
+     * @param position
+     */
     private void loadImages(final WeatherDetailsListAdapter.MyViewHolder mViewHolder, String url, final int position) {
 
 
@@ -76,7 +104,7 @@ public class WeatherDetailsListAdapter extends RecyclerView.Adapter<WeatherDetai
             @Override
             public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
 
-
+                // Loading Images requested using image URL
                 Bitmap mPhoto = response.getBitmap();
                 if (mPhoto != null) {
                     mViewHolder.weatherImage.setImageBitmap(mPhoto);
@@ -92,34 +120,44 @@ public class WeatherDetailsListAdapter extends RecyclerView.Adapter<WeatherDetai
 
     }
 
+    /**
+     * adding all weather data using custom method
+     *
+     * @param weatherDetails
+     */
+    public void addAll(List<WeatherDetails> weatherDetails) {
 
-    public void addAll(List<WeatherDetails> advertisements) {
-
-
-        for (int i = 0; i < advertisements.size(); i++) {
-            mWeatherDataList.add(advertisements.get(i));
+        //Looping through data structure to populate weather data at once
+        for (int counter = 0; counter < weatherDetails.size(); counter++) {
+            mWeatherDataList.add(weatherDetails.get(counter));
             notifyItemInserted(mWeatherDataList.size());
         }
     }
 
+    //clears the weather data adapter/ recycler view
     public void clear() {
-
-
-        for (int i = mWeatherDataList.size() - 1; i >= 0; i--) {
-            mWeatherDataList.remove(mWeatherDataList.get(i));
+        for (int counter = mWeatherDataList.size() - 1; counter >= 0; counter--) {
+            mWeatherDataList.remove(mWeatherDataList.get(counter));
             notifyItemRemoved(mWeatherDataList.size());
         }
 
 
     }
 
+    /**
+     * returns the size of adapter
+     *
+     * @return
+     */
     @Override
     public int getItemCount() {
 
         return mWeatherDataList.size();
     }
 
-
+    /**
+     * Inner class to contain ViewHolder
+     */
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView day;
@@ -128,7 +166,7 @@ public class WeatherDetailsListAdapter extends RecyclerView.Adapter<WeatherDetai
         TextView condition;
         ImageView weatherImage;
 
-
+        //Constructor to populate all child views
         public MyViewHolder(View itemView) {
             super(itemView);
 
@@ -142,6 +180,7 @@ public class WeatherDetailsListAdapter extends RecyclerView.Adapter<WeatherDetai
 
         }
 
+        //Touch interface method called when an item is clicked on the recycler view
         @Override
         public void onClick(View v) {
 

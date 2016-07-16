@@ -1,9 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WeatherTest</string>
-    <string name="hint_search">search</string>
     <string name="day">day:</string>
     <string name="high">high:</string>
-    <string name="low">low:</string>
     <string name="condition">condition:</string>
     <string name="max_wind">max wind:</string>
     <string name="average_wind">average wind:</string>
