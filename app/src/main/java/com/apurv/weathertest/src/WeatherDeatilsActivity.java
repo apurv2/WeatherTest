@@ -2,6 +2,7 @@ package com.apurv.weathertest.src;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
@@ -18,9 +19,15 @@ public class WeatherDeatilsActivity extends AppCompatActivity {
 
         try {
 
+            ActionBar mActionBar = getSupportActionBar();
+            mActionBar.setDisplayHomeAsUpEnabled(true);
+
+
+            //Getting weather details from previous intent using bundle and parcel
             Intent mCallingIntent = this.getIntent();
             WeatherDetails mWeatherDetails = mCallingIntent.getExtras().getParcelable(WeatherConstants.WEATHER_DETAILS_PARCEL_KEY);
 
+            //Using text Views to populate weather data
             TextView mDayTextView = (TextView) findViewById(R.id.day1);
             TextView mHighTextView = (TextView) findViewById(R.id.high1);
             TextView mLowTextView = (TextView) findViewById(R.id.low1);
@@ -29,7 +36,7 @@ public class WeatherDeatilsActivity extends AppCompatActivity {
             TextView mAvgWindTextView = (TextView) findViewById(R.id.avgWind);
             TextView mAvgHumidityTextView = (TextView) findViewById(R.id.avgHumidity);
 
-
+            //Setting weather data to text views
             mDayTextView.setText(mWeatherDetails.getDay());
             mHighTextView.setText(mWeatherDetails.getHigh());
             mLowTextView.setText(mWeatherDetails.getLow());
